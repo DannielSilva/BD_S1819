@@ -50,8 +50,8 @@ select numProcessoSocorro from (
 #4. Quantos segmentos de vídeo com duração superior a 60 segundos, 
 #   foram gravados em câmeras de vigilância de Monchique durante o mês de Agosto de 2018;
 
-select count from vigia
-natural join video
+select count(segmentoVideo) 
+from vigia natural join video
 where duracao > '00:01:00' 
 and dataHoraInicio >= '01:08:2018 00:00:00'
 and dataHoraFim <= '01:09:2018 00:00:00'
@@ -72,3 +72,14 @@ select * from (
 #	Processos de socorro que acionaram meios;
 
 ## IGUAL A PERGUNTA 1.g) do lab 8 de BD
+
+select nomeEntidade
+from acciona d
+where not exists (
+	select numProcessoSocorro
+	from acciona 
+	except
+	select numProcessoSocorro
+	from (acciona inner join meioCombate) b
+	where b.numProcessoSocorro = d.numProcessoSocorro
+)
