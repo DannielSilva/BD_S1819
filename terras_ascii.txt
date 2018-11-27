@@ -1,3 +1,5 @@
+Monchique
+Oliveira do Hospital
 Torres Vedras
 Lisboa
 Caldas da Rainha
@@ -224,7 +226,7 @@ Vila Nova de Gaia
 
 
 Avis
-Oliveira do Hospital
+
 
 
 
@@ -1110,7 +1112,7 @@ Olhao
 
 
 
-Monchique
+
 Tarouca
 
 

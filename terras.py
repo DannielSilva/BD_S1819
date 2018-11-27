@@ -7,15 +7,16 @@ from datetime import datetime
 def remove_n(string):
     return string[:-1]
 
-f1 = open("terras_ascii.txt","r")
+#f1 = open("terras_ascii.txt","r")
 #CRIACAO DE TERRINHAS
-terras = f1.readlines()
-terras = list(set(terras))
-terras = list(filter(lambda x: x != "\n", terras))
-terras = list(map(remove_n, terras))
+#terras = f1.readlines()
+#terras = list(set(terras))
+#terras = list(filter(lambda x: x != "\n", terras))
+#terras = list(map(remove_n, terras))
 #print(terras)
 #print(len(terras))
-f1.close()
+#f1.close()
+terras = ['Oliveira do Hospital', 'Monchique', 'Albergaria-a-Velha', 'Proenca-a-Nova', 'Valpacos', 'Aljustrel', 'Sao Pedro do Sul', 'Castro Daire', 'Batalha', 'Torres Vedras', 'Sesimbra', 'Tondela', 'Vila Verde', 'Amares', 'Ferreira do Alentejo', 'Penacova', 'Salvaterra de Magos', 'Santarem', 'Alenquer', 'Caldas da Rainha', 'Vila Real', 'Boticas', 'Vila Flor', 'Velas', 'Sardoal', 'Castanheira de Pera', 'Celorico de Basto', 'Belmonte', 'Almada', 'Lourinha', 'Vila do Porto', 'Mira', 'Povoa de Varzim', 'Moura', 'Vila Nova de Famalicao', 'Nisa', 'Gondomar', 'Viana do Castelo', 'Felgueiras', 'Guarda', 'Odivelas', 'Odemira', 'Fafe', 'Ourique', 'Penela', 'Vila Nova de Cerveira', 'Vila Franca do Campo', 'Agueda', 'Marco de Canaveses', 'Arouca', 'Penedono', 'Vila Nova de Paiva', 'Trancoso', 'Sever do Vouga', 'Loures', 'Cantanhede', 'Viana do Alentejo', 'Aljezur', 'Vila Nova de Poiares', 'Evora', 'Alpiarca', 'Marvao', 'Lousada', 'Crato', 'Campo Maior', 'Vinhais', 'Caminha', 'Moita', 'Penafiel', 'Amarante', 'Nelas', 'Alandroal', 'Penalva do Castelo', 'Alijo', 'Cabeceiras de Basto', 'Montemor-o-Velho', 'Cartaxo', 'Aveiro', 'Vila Real de Santo Antonio', 'Espinho', 'Barrancos', 'Coruche', 'Santa Cruz das Flores', 'Moncao', 'Tarouca', 'Mondim de Basto', 'Santa Marta de Penaguiao', 'Pampilhosa da Serra', 'Lagoa', 'Santa Cruz', 'Terras de Bouro', 'Sernancelhe', 'Cuba', 'Alfandega da Fe', 'Ovar', 'Palmela', 'Sobral de Monte Agraco', 'Golega', 'Vieira do Minho', 'Ansiao', 'Beja', 'Arruda dos Vinhos', 'Serpa', 'Vila Nova de Foz Coa', 'Bombarral', 'Maia', 'Alcochete', 'Praia da Vitoria', 'Sabrosa', 'Matosinhos', 'Cascais', 'Mafra', 'Figueira de Castelo Rodrigo', 'Paredes', 'Coimbra', 'Arcos de Valdevez', 'Ribeira de Pena', 'Serta', 'Calheta', 'Oliveira de Azemeis', 'Miranda do Corvo', 'Vila Velha de Rodao', 'Arganil', 'Sabugal', 'Santa Comba Dao', 'Arraiolos', 'Murtosa', 'Guimaraes', 'Vale de Cambra', 'Montalegre', 'Condeixa-a-Nova', 'Vila do Bispo', 'Ourem', 'Loule', 'Braganca', 'Ponte da Barca', 'Constancia', 'Avis', 'Montemor-o-Novo', 'Grandola', 'Abrantes', 'Fronteira', 'Castelo de Paiva', 'Sao Joao da Pesqueira', 'Almeirim', 'Machico', 'Fornos de Algodres', 'Seia', 'Povoacao', 'Marinha Grande', 'Vila Nova de Gaia', 'Figueira da Foz', 'Alcobaca', 'Oliveira de Frades', 'Alter do Chao', 'Freixo de Espada a Cinta', 'Pedrogao Grande', 'Tavira', 'Vimioso', 'Baiao', 'Corvo', 'Rio Maior', 'Mourao', 'Monforte', 'Fundao', 'Sao Bras de Alportel', 'Chaves', 'Azambuja', 'Santa Cruz da Graciosa', 'Porto de Mos', 'Vizela', 'Ponta do Sol', 'Ilhavo', 'Vidigueira', 'Povoa de Lanhoso', 'Gois', 'Carregal do Sal', 'Angra do Heroismo', 'Sao Vicente', 'Madalena', 'Carrazeda de Ansiaes', 'Oeiras', 'Porto Moniz', 'Vila Franca de Xira', 'Torres Novas', 'Sintra', 'Castelo Branco', 'Valongo', 'Anadia', 'Leiria', 'Sousel', 'Camara de Lobos', 'Santiago do Cacem', 'Cadaval', 'Figueiro dos Vinhos', 'Lousa', 'Satao', 'Almeida', 'Soure', 'Castro Marim', 'Lagos', 'Aguiar da Beira', 'Santo Tirso', 'Mortagua', 'Lisboa', 'Vila Nova da Barquinha', 'Chamusca', 'Alcacer do Sal', 'Covilha', 'Viseu', 'Vila Pouca de Aguiar', 'Ribeira Grande', 'Mertola', 'Almodovar', 'Barreiro', 'Ponta Delgada', 'Arronches', 'Mora', 'Seixal', 'Pombal', 'Esposende', 'Manteigas', 'Alvito', 'Castro Verde', 'Portel', 'Oleiros', 'Lajes das Flores', 'Silves', 'Cinfaes', 'Vouzela', 'Macao', 'Resende', 'Redondo', 'Alcanena', 'Alcoutim', 'Lajes do Pico', 'Vila de Rei', 'Penamacor', 'Nordeste', 'Mogadouro', 'Oliveira do Bairro', 'Estarreja', 'Mealhada', 'Tabuaco', 'Celorico da Beira', 'Pacos de Ferreira', 'Trofa', 'Nazare', 'Sao Roque do Pico', 'Olhao', 'Murca', 'Mesao Frio', 'Castelo de Vide', 'Torre de Moncorvo', 'Tabua', 'Mirandela', 'Meda', 'Peniche', 'Lamego', 'Santa Maria da Feira', 'Armamar', 'Ponte de Lima', 'Paredes de Coura', 'Gouveia', 'Miranda do Douro', 'Moimenta da Beira', 'Ferreira do Zezere', 'Portimao', 'Obidos', 'Ribeira Brava', 'Idanha-a-Nova', 'Gaviao', 'Vagos', 'Benavente', 'Alvaiazere', 'Melgaco', 'Vila Vicosa']
 
 #CRIACAO DE NOMES
 nomes = ["Ana", "Catarina", "Helena", "Rita", "Ines", "Joao", "Daniel", "Diogo", "Tiago", "Miguel"]
@@ -110,22 +111,24 @@ for terra in terras:
 
 
 numProcess = 0
+apoios_alocados = 0
 
 for entidade in ents_final:
     txt += "insert into entidadeMeio values ('" + entidade + "');\n"
     meio += "insert into meio values (" + str(0) + ", 'Ambulancia', '" + entidade + "');\n"
     socorro += "insert into meioSocorro values (" + str(0) + ", '" + entidade + "');\n"
-    if numProcess%5 == 0:
+    if numProcess%2 == 0: #so alguns meios de socorro acionados/transportam
         transporta += "insert into transporta values (" + str(0) + ", '" + entidade + "', " + str(randint(1,5)) + ", " + str(numProcess % 100) + ");\n"
         acciona += "insert into acciona values (" + str(0) + ", '" + entidade + "', " + str(numProcess % 100) + ");\n"
         accionados.append([0,entidade,numProcess])
-    if numProcess%3 == 0:
+    if numProcess%2 == 0:
         meio += "insert into meio values (" + str(1) + ", 'Trator', '" + entidade + "');\n"
         apoio += "insert into meioApoio values (" + str(1) + ", '" + entidade + "');\n"
-        if randint(0,1) == 0:
+        if apoios_alocados < 100: #so alguns de apoio sao acioandos/alocado
             alocado += "insert into alocado values (" + str(1) + ", '" + entidade + "', " + str(randint(0,30)) + ", " + str(numProcess % 100) + ");\n"
             acciona += "insert into acciona values (" + str(1) + ", '" + entidade + "', " + str(numProcess % 100) + ");\n"
             accionados.append([1,entidade,numProcess])
+            apoios_alocados += 1
     numProcess += 1
 
 #meio
@@ -157,44 +160,45 @@ txt += "\n"
 txt += acciona
 
 #coordenador
+txt += "\n"
 for i in range(100):
     txt += "insert into coordenador values (" + str(i) + ");\n"
 
 #audita
-
+used = []
+txt += "\n"
 for i in range(100):
     coordenador = i
-    numMeio = accionados[i][0]
-    entidade = accionados[i][1]
-    numProc = accionados[i][2]
-
+    escolhido = choice(accionados)
+    numMeio = escolhido[0]
+    entidade = escolhido[1]
+    numProc = escolhido[2]
+    #THIS IS SLOW
+    while [numMeio, entidade, numProc] in used:
+        escolhido = choice(accionados)
+        numMeio = escolhido[0]
+        entidade = escolhido[1]
+        numProc = escolhido[2]
+    used.append([numMeio, entidade, numProc])    
     dataAuditoria = random_date(datetime.strptime('2018-05-01',"%Y-%m-%d"),datetime.strptime('2018-11-27',"%Y-%m-%d"))
     dataHoraInicio = "09:00:00"
     dataHoraFim = "18:00:00"
     texto = "Auditoria do Coordenador " + str(i) + " em relacao ao meio " + str(numMeio) + " de " + entidade + " na data " + str(dataAuditoria) + " com inicio as " + dataHoraInicio + " e fim as " + dataHoraFim
     txt += "insert into audita values (" + str(i) + ", " + str(numMeio) + ", '" + entidade + "', " + str(numProc) + ", '" + dataHoraInicio + "', '" +  dataHoraFim + "', '" + str(dataAuditoria) + "', '" + texto + "');\n"
 
+#solicita
+txt += "\n"
+for i in range(100):
+    dataHoraInicioVideo = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
+    dataHoraInicio = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
+    dataHoraFim = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
+    while dataHoraFim < dataHoraInicio or dataHoraInicio < dataHoraInicioVideo:
+        dataHoraFim = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
+        dataHoraInicio = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
+    txt += "insert into solicita values (" + str(i) + ", " + str(i) + ", '" + str(dataHoraInicioVideo) + "', '" + str(dataHoraInicio) + "', '" + str(dataHoraFim) +  "');\n"   
 
-"""
-#MEIO
-#1000 meios
-txt+= "\n"
-meioSocorro = ""
-used = []
-#nomes = ["Ambulancia", "Carrinha"]
-nomes = ["Ambulancia"]
-for ent in ents_final:
-    for num in range(len(nomes)):
-        nome = nomes[num]
-        meioSocorro += "insert into meio values (" + str(num) + ", '" + nome + "', '" + ent + "');\n"
-        txt +=  meioSocorro
-nome = ["Carrinha"]
-for ent in ents_nacional:
-    txt += "insert into meio values (" + str(0) + ", '" + nome + "', '" + ent + "');\n" 
-"""
+#escrever no populate
 f1 = open("terras.sql", "w")
-
 f1.write(txt)
 f1.close()
 
-['Oliveira do Hospital', 'Albergaria-a-Velha', 'Proenca-a-Nova', 'Valpacos', 'Aljustrel', 'Sao Pedro do Sul', 'Castro Daire', 'Batalha', 'Torres Vedras', 'Sesimbra', 'Tondela', 'Vila Verde', 'Amares', 'Ferreira do Alentejo', 'Penacova', 'Salvaterra de Magos', 'Santarem', 'Alenquer', 'Caldas da Rainha', 'Vila Real', 'Boticas', 'Vila Flor', 'Velas', 'Sardoal', 'Castanheira de Pera', 'Celorico de Basto', 'Belmonte', 'Almada', 'Lourinha', 'Vila do Porto', 'Mira', 'Povoa de Varzim', 'Moura', 'Vila Nova de Famalicao', 'Nisa', 'Gondomar', 'Viana do Castelo', 'Felgueiras', 'Guarda', 'Odivelas', 'Odemira', 'Fafe', 'Ourique', 'Penela', 'Vila Nova de Cerveira', 'Vila Franca do Campo', 'Agueda', 'Marco de Canaveses', 'Arouca', 'Penedono', 'Vila Nova de Paiva', 'Trancoso', 'Sever do Vouga', 'Loures', 'Cantanhede', 'Viana do Alentejo', 'Aljezur', 'Vila Nova de Poiares', 'Evora', 'Alpiarca', 'Marvao', 'Lousada', 'Crato', 'Campo Maior', 'Vinhais', 'Caminha', 'Moita', 'Penafiel', 'Amarante', 'Nelas', 'Alandroal', 'Penalva do Castelo', 'Alijo', 'Cabeceiras de Basto', 'Montemor-o-Velho', 'Cartaxo', 'Aveiro', 'Vila Real de Santo Antonio', 'Espinho', 'Barrancos', 'Coruche', 'Santa Cruz das Flores', 'Moncao', 'Tarouca', 'Mondim de Basto', 'Santa Marta de Penaguiao', 'Pampilhosa da Serra', 'Lagoa', 'Santa Cruz', 'Terras de Bouro', 'Sernancelhe', 'Cuba', 'Alfandega da Fe', 'Ovar', 'Palmela', 'Sobral de Monte Agraco', 'Golega', 'Vieira do Minho', 'Ansiao', 'Beja', 'Arruda dos Vinhos', 'Serpa', 'Vila Nova de Foz Coa', 'Bombarral', 'Maia', 'Alcochete', 'Praia da Vitoria', 'Sabrosa', 'Matosinhos', 'Cascais', 'Mafra', 'Figueira de Castelo Rodrigo', 'Monchique', 'Paredes', 'Coimbra', 'Arcos de Valdevez', 'Ribeira de Pena', 'Serta', 'Calheta', 'Oliveira de Azemeis', 'Miranda do Corvo', 'Vila Velha de Rodao', 'Arganil', 'Sabugal', 'Santa Comba Dao', 'Arraiolos', 'Murtosa', 'Guimaraes', 'Vale de Cambra', 'Montalegre', 'Condeixa-a-Nova', 'Vila do Bispo', 'Ourem', 'Loule', 'Braganca', 'Ponte da Barca', 'Constancia', 'Avis', 'Montemor-o-Novo', 'Grandola', 'Abrantes', 'Fronteira', 'Castelo de Paiva', 'Sao Joao da Pesqueira', 'Almeirim', 'Machico', 'Fornos de Algodres', 'Seia', 'Povoacao', 'Marinha Grande', 'Vila Nova de Gaia', 'Figueira da Foz', 'Alcobaca', 'Oliveira de Frades', 'Alter do Chao', 'Freixo de Espada a Cinta', 'Pedrogao Grande', 'Tavira', 'Vimioso', 'Baiao', 'Corvo', 'Rio Maior', 'Mourao', 'Monforte', 'Fundao', 'Sao Bras de Alportel', 'Chaves', 'Azambuja', 'Santa Cruz da Graciosa', 'Porto de Mos', 'Vizela', 'Ponta do Sol', 'Ilhavo', 'Vidigueira', 'Povoa de Lanhoso', 'Gois', 'Carregal do Sal', 'Angra do Heroismo', 'Sao Vicente', 'Madalena', 'Carrazeda de Ansiaes', 'Oeiras', 'Porto Moniz', 'Vila Franca de Xira', 'Torres Novas', 'Sintra', 'Castelo Branco', 'Valongo', 'Anadia', 'Leiria', 'Sousel', 'Camara de Lobos', 'Santiago do Cacem', 'Cadaval', 'Figueiro dos Vinhos', 'Lousa', 'Satao', 'Almeida', 'Soure', 'Castro Marim', 'Lagos', 'Aguiar da Beira', 'Santo Tirso', 'Mortagua', 'Lisboa', 'Vila Nova da Barquinha', 'Chamusca', 'Alcacer do Sal', 'Covilha', 'Viseu', 'Vila Pouca de Aguiar', 'Ribeira Grande', 'Mertola', 'Almodovar', 'Barreiro', 'Ponta Delgada', 'Arronches', 'Mora', 'Seixal', 'Pombal', 'Esposende', 'Manteigas', 'Alvito', 'Castro Verde', 'Portel', 'Oleiros', 'Lajes das Flores', 'Silves', 'Cinfaes', 'Vouzela', 'Macao', 'Resende', 'Redondo', 'Alcanena', 'Alcoutim', 'Lajes do Pico', 'Vila de Rei', 'Penamacor', 'Nordeste', 'Mogadouro', 'Oliveira do Bairro', 'Estarreja', 'Mealhada', 'Tabuaco', 'Celorico da Beira', 'Pacos de Ferreira', 'Trofa', 'Nazare', 'Sao Roque do Pico', 'Olhao', 'Murca', 'Mesao Frio', 'Castelo de Vide', 'Torre de Moncorvo', 'Tabua', 'Mirandela', 'Meda', 'Peniche', 'Lamego', 'Santa Maria da Feira', 'Armamar', 'Ponte de Lima', 'Paredes de Coura', 'Gouveia', 'Miranda do Douro', 'Moimenta da Beira', 'Ferreira do Zezere', 'Portimao', 'Obidos', 'Ribeira Brava', 'Idanha-a-Nova', 'Gaviao', 'Vagos', 'Benavente', 'Alvaiazere', 'Melgaco', 'Vila Vicosa']

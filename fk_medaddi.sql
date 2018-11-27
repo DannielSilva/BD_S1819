@@ -154,8 +154,8 @@ create table audita (
 
 create table solicita (
     idCoordenador numeric(16) not null,
-    dataHoraInicioVideo timestamp not null,
     numCamara numeric(16) not null,
+    dataHoraInicioVideo timestamp not null,
     dataHoraInicio timestamp not null,
     dataHoraFim timestamp not null CHECK (dataHoraInicio < dataHoraFim),
     constraint fk_coordenador foreign key(idCoordenador) references coordenador(idCoordenador),
