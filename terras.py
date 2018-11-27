@@ -76,35 +76,85 @@ for i in range(0,len(terras)):
 
 txt+= "\n"
 ents_terrinhas = ["Bombeiros de", "Policia Municipal de"]
-ents_nacional = ["Exercito", "Força Aerea", "PSP", "GNR"]
-
+#ents_nacional = ["Exercito", "Força Aerea", "PSP", "GNR"]
+ents_nacional = ["Força Aerea"]
 ents_final = []
 
+meio = ""
+apoio = ""
+socorro = ""
+combate = ""
+transporta = "" #todas as ambulancias transportam
+alocado = "" #todos os apoios estao alocados
+acciona = "" #todos os meios de apoio, socorro e combate estao acionados DANGER DANGER
+for ent in ents_nacional:
+    txt += "insert into entidadeMeio values ('" + ent + "');\n"
+    for i in range(100):
+        meio += "insert into meio values (" + str(i) + ", 'F-" + str(i) +"', '" + ent + "');\n"
+        combate += "insert into meioCombate values (" + str(i) + ", '" + ent + "');\n"
+        acciona += "insert into acciona values (" + str(0) + ", '" + ent + ", " + str(i) + "');\n"
+
+numProcess = 0
 for terra in terras:
-    for ent in ents_terrinhas:
+    for i in range(len(ents_terrinhas)):
+        ent = ents_terrinhas[i]
         entidade = ent + " " + terra
         ents_final.append(entidade)
         txt += "insert into entidadeMeio values ('" + entidade + "');\n"
-for ent in ents_nacional:
-    ents_final.append(ent)
-    txt += "insert into entidadeMeio values ('" + ent + "');\n"
+        if i == 0:
+            meio += "insert into meio values (" + str(0) + ", 'Ambulancia', '" + entidade + "');\n"
+            socorro += "insert into meioSocorro values (" + str(0) + ", '" + entidade + "');\n"
+            transporta += "insert into transporta values (" + str(0) + ", '" + entidade + ", " + str(randint(0,5)) + ", " + str(numProcess % 100) + "');\n"
+            numProcess += 1
+        else:
+            meio += "insert into meio values (" + str(0) + ", 'Carrinha', '" + entidade + "');\n"
+            apoio += "insert into meioApoio values (" + str(0) + ", '" + entidade + "');\n"
+            alocado += "insert into alocado values (" + str(0) + ", '" + entidade + ", " + str(randint(0,30)) + ", " + str(numProcess % 100) + "');\n"
 
-#MEIO
-#poucos meios?
+        acciona += "insert into acciona values (" + str(0) + ", '" + entidade + ", " + str(numProcess % 100) + "');\n"
+
 txt+= "\n"
-used = []
+txt += meio
+
+txt += "\n"
+txt += combate
+
+txt+= "\n"
+txt += apoio
+
+txt+= "\n"
+txt += socorro
+
+txt+= "\n"
+txt += transporta
+
+txt+= "\n"
+txt += alocado
+
+txt += "\n"
+txt += acciona
+
 for i in range(100):
-    num = randint(0,100)
-    #nome = ?
-    ent = choice(ents_final)
-    while [num, ent] in used:
-        num = randint(0,100)
-        ent = choice(ents_final)
-    used.append([num, ent])
-    #falta o nome
-    txt += "insert into meio values (" + str(num) + ", '" + ent + "');\n" 
+    txt += "insert into coordenador values (" + str(i) + ");\n"
 
 
+"""
+#MEIO
+#1000 meios
+txt+= "\n"
+meioSocorro = ""
+used = []
+#nomes = ["Ambulancia", "Carrinha"]
+nomes = ["Ambulancia"]
+for ent in ents_final:
+    for num in range(len(nomes)):
+        nome = nomes[num]
+        meioSocorro += "insert into meio values (" + str(num) + ", '" + nome + "', '" + ent + "');\n"
+        txt +=  meioSocorro
+nome = ["Carrinha"]
+for ent in ents_nacional:
+    txt += "insert into meio values (" + str(0) + ", '" + nome + "', '" + ent + "');\n" 
+"""
 f1 = open("terras.sql", "w")
 
 f1.write(txt)
