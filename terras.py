@@ -59,7 +59,7 @@ for i in range(len(terras)):
 #pode se repetir o nome da pessoa? choice(nomes)
 txt+= "\n"
 for i in range(100):
-    txt += "insert into eventoEmergencia  values (" + str(numeros[i])+ ", '" + str(random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-11-24 00:00',"%Y-%m-%d %H:%M"))) + "', '" + choice(nomes_final) + "', '" + terras[i] + "', " + str(i) + ");\n"
+    txt += "insert into eventoEmergencia  values (" + str(numeros[i])+ ", '" + str(random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))) + "', '" + choice(nomes_final) + "', '" + terras[i] + "', " + str(i) + ");\n"
 
 #processoSocorro
 txt+= "\n"
@@ -75,8 +75,8 @@ for i in range(0,len(terras)):
 #500 entidades?
 
 txt+= "\n"
-ents_terrinhas = ["Bombeiros de", "Policia Municipal de"]
-#ents_nacional = ["Exercito", "Força Aerea", "PSP", "GNR"]
+ents_terrinhas = ["Bombeiros de"]
+#ents_nacional = ["Exercito", "Força Aerea", "PSP", "GNR",""]
 ents_nacional = ["Força Aerea"]
 ents_final = []
 
@@ -87,55 +87,92 @@ combate = ""
 transporta = "" #todas as ambulancias transportam
 alocado = "" #todos os apoios estao alocados
 acciona = "" #todos os meios de apoio, socorro e combate estao acionados DANGER DANGER
+accionados = []
 for ent in ents_nacional:
     txt += "insert into entidadeMeio values ('" + ent + "');\n"
     for i in range(100):
         meio += "insert into meio values (" + str(i) + ", 'F-" + str(i) +"', '" + ent + "');\n"
         combate += "insert into meioCombate values (" + str(i) + ", '" + ent + "');\n"
-        acciona += "insert into acciona values (" + str(0) + ", '" + ent + ", " + str(i) + "');\n"
+        acciona += "insert into acciona values (" + str(i) + ", '" + ent + "', " + str(i) + ");\n"
+        accionados.append([i,ent,i])
+        if i%5 ==0:
+            meio += "insert into meio values (" + str(i//5) + ", 'C-" + str(i//5) +"', 'Exercito');\n"
+            combate += "insert into meioCombate values (" + str(i//5) + ", 'Exercito');\n"
+            acciona += "insert into acciona values (" + str(i//5) + ", 'Exercito', " + str(i//5) + ");\n"
+            accionados.append([i//5,ent,i//5])
 
-numProcess = 0
+
 for terra in terras:
     for i in range(len(ents_terrinhas)):
         ent = ents_terrinhas[i]
         entidade = ent + " " + terra
         ents_final.append(entidade)
-        txt += "insert into entidadeMeio values ('" + entidade + "');\n"
-        if i == 0:
-            meio += "insert into meio values (" + str(0) + ", 'Ambulancia', '" + entidade + "');\n"
-            socorro += "insert into meioSocorro values (" + str(0) + ", '" + entidade + "');\n"
-            transporta += "insert into transporta values (" + str(0) + ", '" + entidade + ", " + str(randint(0,5)) + ", " + str(numProcess % 100) + "');\n"
-            numProcess += 1
-        else:
-            meio += "insert into meio values (" + str(0) + ", 'Carrinha', '" + entidade + "');\n"
-            apoio += "insert into meioApoio values (" + str(0) + ", '" + entidade + "');\n"
-            alocado += "insert into alocado values (" + str(0) + ", '" + entidade + ", " + str(randint(0,30)) + ", " + str(numProcess % 100) + "');\n"
 
-        acciona += "insert into acciona values (" + str(0) + ", '" + entidade + ", " + str(numProcess % 100) + "');\n"
 
+numProcess = 0
+
+for entidade in ents_final:
+    txt += "insert into entidadeMeio values ('" + entidade + "');\n"
+    meio += "insert into meio values (" + str(0) + ", 'Ambulancia', '" + entidade + "');\n"
+    socorro += "insert into meioSocorro values (" + str(0) + ", '" + entidade + "');\n"
+    if numProcess%5 == 0:
+        transporta += "insert into transporta values (" + str(0) + ", '" + entidade + "', " + str(randint(1,5)) + ", " + str(numProcess % 100) + ");\n"
+        acciona += "insert into acciona values (" + str(0) + ", '" + entidade + "', " + str(numProcess % 100) + ");\n"
+        accionados.append([0,entidade,numProcess])
+    if numProcess%3 == 0:
+        meio += "insert into meio values (" + str(1) + ", 'Trator', '" + entidade + "');\n"
+        apoio += "insert into meioApoio values (" + str(1) + ", '" + entidade + "');\n"
+        if randint(0,1) == 0:
+            alocado += "insert into alocado values (" + str(1) + ", '" + entidade + "', " + str(randint(0,30)) + ", " + str(numProcess % 100) + ");\n"
+            acciona += "insert into acciona values (" + str(1) + ", '" + entidade + "', " + str(numProcess % 100) + ");\n"
+            accionados.append([1,entidade,numProcess])
+    numProcess += 1
+
+#meio
 txt+= "\n"
 txt += meio
 
+#COMBATE
 txt += "\n"
 txt += combate
 
+#apoio
 txt+= "\n"
 txt += apoio
 
+#socorro
 txt+= "\n"
 txt += socorro
 
+#transporta
 txt+= "\n"
 txt += transporta
 
+#alocado
 txt+= "\n"
 txt += alocado
 
+#acciona
 txt += "\n"
 txt += acciona
 
+#coordenador
 for i in range(100):
     txt += "insert into coordenador values (" + str(i) + ");\n"
+
+#audita
+
+for i in range(100):
+    coordenador = i
+    numMeio = accionados[i][0]
+    entidade = accionados[i][1]
+    numProc = accionados[i][2]
+
+    dataAuditoria = random_date(datetime.strptime('2018-05-01',"%Y-%m-%d"),datetime.strptime('2018-11-27',"%Y-%m-%d"))
+    dataHoraInicio = "09:00:00"
+    dataHoraFim = "18:00:00"
+    texto = "Auditoria do Coordenador " + str(i) + " em relacao ao meio " + str(numMeio) + " de " + entidade + " na data " + str(dataAuditoria) + " com inicio as " + dataHoraInicio + " e fim as " + dataHoraFim
+    txt += "insert into audita values (" + str(i) + ", " + str(numMeio) + ", '" + entidade + "', " + str(numProc) + ", '" + dataHoraInicio + "', '" +  dataHoraFim + "', '" + str(dataAuditoria) + "', '" + texto + "');\n"
 
 
 """
