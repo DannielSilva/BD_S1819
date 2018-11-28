@@ -69,7 +69,7 @@ for i in range(100):
 
 #LOCAL
 txt+= "\n"
-for i in range(0,len(terras)):    
+for i in range(0,len(terras)):
     txt += "insert into local values ('" + terras[i] + "');\n"
 
 #ENTIDADE MEIO
@@ -120,14 +120,14 @@ for entidade in ents_final:
     if numProcess%2 == 0: #so alguns meios de socorro acionados/transportam
         transporta += "insert into transporta values (" + str(0) + ", '" + entidade + "', " + str(randint(1,5)) + ", " + str(numProcess % 100) + ");\n"
         acciona += "insert into acciona values (" + str(0) + ", '" + entidade + "', " + str(numProcess % 100) + ");\n"
-        accionados.append([0,entidade,numProcess])
+        accionados.append([0,entidade,numProcess%100])
     if numProcess%2 == 0:
         meio += "insert into meio values (" + str(1) + ", 'Trator', '" + entidade + "');\n"
         apoio += "insert into meioApoio values (" + str(1) + ", '" + entidade + "');\n"
         if apoios_alocados < 100: #so alguns de apoio sao acioandos/alocado
             alocado += "insert into alocado values (" + str(1) + ", '" + entidade + "', " + str(randint(0,30)) + ", " + str(numProcess % 100) + ");\n"
             acciona += "insert into acciona values (" + str(1) + ", '" + entidade + "', " + str(numProcess % 100) + ");\n"
-            accionados.append([1,entidade,numProcess])
+            accionados.append([1,entidade,numProcess%100])
             apoios_alocados += 1
     numProcess += 1
 
@@ -173,13 +173,9 @@ for i in range(100):
     numMeio = escolhido[0]
     entidade = escolhido[1]
     numProc = escolhido[2]
-    #THIS IS SLOW
-    while [numMeio, entidade, numProc] in used:
-        escolhido = choice(accionados)
-        numMeio = escolhido[0]
-        entidade = escolhido[1]
-        numProc = escolhido[2]
-    used.append([numMeio, entidade, numProc])    
+    #THIS IS SPARTACUS
+
+    accionados.remove(escolhido)
     dataAuditoria = random_date(datetime.strptime('2018-05-01',"%Y-%m-%d"),datetime.strptime('2018-11-27',"%Y-%m-%d"))
     dataHoraInicio = "09:00:00"
     dataHoraFim = "18:00:00"
@@ -188,17 +184,8 @@ for i in range(100):
 
 #solicita
 txt += "\n"
-for i in range(100):
-    dataHoraInicioVideo = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
-    dataHoraInicio = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
-    dataHoraFim = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
-    while dataHoraFim < dataHoraInicio or dataHoraInicio < dataHoraInicioVideo:
-        dataHoraFim = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
-        dataHoraInicio = random_date(datetime.strptime('2017-01-01 00:00',"%Y-%m-%d %H:%M"),datetime.strptime('2018-09-10 00:00',"%Y-%m-%d %H:%M"))
-    txt += "insert into solicita values (" + str(i) + ", " + str(i) + ", '" + str(dataHoraInicioVideo) + "', '" + str(dataHoraInicio) + "', '" + str(dataHoraFim) +  "');\n"   
 
 #escrever no populate
 f1 = open("terras.sql", "w")
 f1.write(txt)
 f1.close()
-
