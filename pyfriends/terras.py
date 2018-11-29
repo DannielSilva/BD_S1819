@@ -78,7 +78,7 @@ for i in range(0,len(terras)):
 txt+= "\n"
 ents_terrinhas = ["Bombeiros de"]
 #ents_nacional = ["Exercito", "Força Aerea", "PSP", "GNR",""]
-ents_nacional = ["Força Aerea"]
+ents_nacional = ["Força Aerea", "Exercito"]
 ents_final = []
 
 meio = ""
@@ -89,18 +89,19 @@ transporta = "" #todas as ambulancias transportam
 alocado = "" #todos os apoios estao alocados
 acciona = "" #todos os meios de apoio, socorro e combate estao acionados DANGER DANGER
 accionados = []
+
 for ent in ents_nacional:
     txt += "insert into entidadeMeio values ('" + ent + "');\n"
-    for i in range(100):
-        meio += "insert into meio values (" + str(i) + ", 'F-" + str(i) +"', '" + ent + "');\n"
-        combate += "insert into meioCombate values (" + str(i) + ", '" + ent + "');\n"
-        acciona += "insert into acciona values (" + str(i) + ", '" + ent + "', " + str(i) + ");\n"
-        accionados.append([i,ent,i])
-        if i%5 ==0:
-            meio += "insert into meio values (" + str(i//5) + ", 'C-" + str(i//5) +"', 'Exercito');\n"
-            combate += "insert into meioCombate values (" + str(i//5) + ", 'Exercito');\n"
-            acciona += "insert into acciona values (" + str(i//5) + ", 'Exercito', " + str(i//5) + ");\n"
-            accionados.append([i//5,ent,i//5])
+for i in range(100):
+    meio += "insert into meio values (" + str(i) + ", 'F-" + str(i) +"', '" + ent + "');\n"
+    combate += "insert into meioCombate values (" + str(i) + ", '" + ent + "');\n"
+    acciona += "insert into acciona values (" + str(i) + ", '" + ent + "', " + str(i) + ");\n"
+    accionados.append([i,ent,i])
+    if i%5 ==0:
+        meio += "insert into meio values (" + str(i//5) + ", 'C-" + str(i//5) +"', 'Exercito');\n"
+        combate += "insert into meioCombate values (" + str(i//5) + ", 'Exercito');\n"
+        acciona += "insert into acciona values (" + str(i//5) + ", 'Exercito', " + str(i//5) + ");\n"
+        accionados.append([i//5,ent,i//5])
 
 
 for terra in terras:
