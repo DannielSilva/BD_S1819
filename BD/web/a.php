@@ -94,16 +94,16 @@
         foreach($result as $row)
         {
             echo("<tr><td>");
-            echo($row['numTelefone']);
+            echo($row['numtelefone']);
             echo("</td><td>");
-            echo($row['instanteChamada']);
+            echo($row['instantechamada']);
             echo("</td><td>");
-            echo($row['nomePessoa']);
+            echo($row['nomepessoa']);
             echo("</td><td>");
-            echo($row['moradaLocal']);
+            echo($row['moradalocal']);
             echo("</td><td>");
-            echo($row['numProcessoSocorro']);
-            echo("</td><td><a href=\"a.php?mode=delete&type=eventoEmergencia&id={$row['numTelefone']}&id2={$row['instanteChamada']}\">delete</a></td></tr>\n");
+            echo($row['numprocessosocorro']);
+            echo("</td><td><a href=\"a.php?mode=delete&type=eventoEmergencia&id={$row['numtelefone']}&id2={$row['instantechamada']}\">delete</a></td></tr>\n");
         }
         echo("</table>\n");
 
@@ -116,8 +116,8 @@
         foreach($result as $row)
         {
             echo("<tr><td>");
-            echo($row['numProcessoSocorro']);
-            echo("</td><td><a href=\"a.php?mode=delete&type=processoSocorro&id={$row['numProcessoSocorro']}\">delete</a></td></tr>\n");
+            echo($row['numprocessosocorro']);
+            echo("</td><td><a href=\"a.php?mode=delete&type=processoSocorro&id={$row['numprocessoSocorro']}\">delete</a></td></tr>\n");
         }
         echo("</table>\n");
 
@@ -130,12 +130,12 @@
         foreach($result as $row)
         {
             echo("<tr><td>");
-            echo($row['numMeio']);
+            echo($row['nummeio']);
             echo("</td><td>");
-            echo($row['nomeMeio']);
+            echo($row['nomemeio']);
             echo("</td><td>");
-            echo($row['nomeEntidade']);
-            echo("</td><td><a href=\"a.php?mode=delete&type=meio&id={$row['numMeio']}&id2={$row['nomeEntidade']}\">delete</a></td></tr>\n");
+            echo($row['nomeentidade']);
+            echo("</td><td><a href=\"a.php?mode=delete&type=meio&id={$row['nummeio']}&id2={$row['nomeentidade']}\">delete</a></td></tr>\n");
         }
         echo("</table>\n");
 
@@ -143,13 +143,13 @@
         $result->execute();
         $result = $result->fetchAll();
 
-        echo("<h3>local</h3><table border=\"1\">\n");
+        echo("<h3>entidades</h3><table border=\"1\">\n");
         echo("<tr><td><b>Nome da entidade</b></td><td></td></tr>\n");
         foreach($result as $row)
         {
             echo("<tr><td>");
-            echo($row['numProcessoSocorro']);
-            echo("</td><td><a href=\"a.php?mode=delete&type=entidadeMeio&id={$row['nomeEntidade']}\">delete</a></td></tr>\n");
+            echo($row['nomeentidade']);
+            echo("</td><td><a href=\"a.php?mode=delete&type=entidadeMeio&id={$row['nomeentidade']}\">delete</a></td></tr>\n");
         }
         echo("</table>\n");
 
