@@ -12,83 +12,82 @@
 
         if ($mode == "delete") {
             if ($type == "local") {
-                $prep = $db->prepare("DELETE FROM local WHERE moradaLocal = :moradaLocal;");
-                $prep->bindParam(':moradaLocal', $_REQUEST['id']);
-                $prep->execute();
+                $result = $db->prepare("DELETE FROM local WHERE moradaLocal = :moradaLocal;");
+                $result->bindParam(':moradaLocal', $_REQUEST['id']);
+                $result->execute();
             }
             if ($type == "eventoEmergencia") {
-                $prep = $db->prepare("DELETE FROM eventoEmergencia WHERE numTelefone = :numTelefone AND instanteChamada = :instanteChamada;");
-                $prep->bindParam(':numTelefone', $_REQUEST['id']);
-                $prep->bindParam(':instanteChamada', $_REQUEST['id2']);
-                $prep->execute();
+                $result = $db->prepare("DELETE FROM eventoEmergencia WHERE numTelefone = :numTelefone AND instanteChamada = :instanteChamada;");
+                $result->bindParam(':numTelefone', $_REQUEST['id']);
+                $result->bindParam(':instanteChamada', $_REQUEST['id2']);
+                $result->execute();
             }
             if ($type == "processoSocorro") {
-                $prep = $db->prepare("DELETE FROM processoSocorro WHERE numProcessoSocorro = :numProcessoSocorro");
-                $prep->bindParam(':numProcessoSocorro', $_REQUEST['id']);
-                $prep->execute();
+                $result = $db->prepare("DELETE FROM processoSocorro WHERE numProcessoSocorro = :numProcessoSocorro");
+                $result->bindParam(':numProcessoSocorro', $_REQUEST['id']);
+                $result->execute();
             }
             if ($type == "meio") {
-                $prep = $db->prepare("DELETE FROM meio WHERE numMeio = :numMeio AND nomeEntidade = :nomeEntidade;");
-                $prep->bindParam(':numMeio', $_REQUEST['id']);
-                $prep->bindParam(':nomeEntidade', $_REQUEST['id2']);
-                $prep->execute();
+                $result = $db->prepare("DELETE FROM meio WHERE numMeio = :numMeio AND nomeEntidade = :nomeEntidade;");
+                $result->bindParam(':numMeio', $_REQUEST['id']);
+                $result->bindParam(':nomeEntidade', $_REQUEST['id2']);
+                $result->execute();
             }
             if ($type == "entidadeMeio") {
-                $prep = $db->prepare("DELETE FROM entidadeMeio WHERE nomeEntidade = :nomeEntidade;");
-                $prep->bindParam(':nomeEntidade', $_REQUEST['id']);
-                $prep->execute();
+                $result = $db->prepare("DELETE FROM entidadeMeio WHERE nomeEntidade = :nomeEntidade;");
+                $result->bindParam(':nomeEntidade', $_REQUEST['id']);
+                $result->execute();
             }
         }
         if ($mode == "add") {
             if ($type == "local") {
-                $prep = $db->prepare("INSERT INTO local VALUES(:moradaLocal);");
-                $prep->bindParam(':moradaLocal', $_REQUEST['moradaLocal']);
-                $prep->execute();
+                $result = $db->prepare("INSERT INTO local VALUES(:moradaLocal);");
+                $result->bindParam(':moradaLocal', $_REQUEST['moradaLocal']);
+                $result->execute();
             }
             if ($type == "eventoEmergencia") {
-                $prep = $db->prepare("INSERT INTO alugavel (numTelefone, instanteChamada) VALUES(:numTelefone, :instanteChamada);");
-                $prep->bindParam(':numTelefone', $_REQUEST['numTelefone']);
-                $prep->bindParam(':instanteChamada', $_REQUEST['instanteChamada']);
-                $prep->execute();
+                $result = $db->prepare("INSERT INTO alugavel (numTelefone, instanteChamada) VALUES(:numTelefone, :instanteChamada);");
+                $result->bindParam(':numTelefone', $_REQUEST['numTelefone']);
+                $result->bindParam(':instanteChamada', $_REQUEST['instanteChamada']);
+                $result->execute();
                 $last_id = $db->lastInsertId();
 
-                $prep = $db->prepare("INSERT INTO espaco (codigo, morada) VALUES(:codigo, :morada);");
-                $prep->bindParam(':codigo', $last_id);
-                $prep->bindParam(':morada', $_REQUEST['morada']);
-                $prep->execute();
+                $result = $db->prepare("INSERT INTO espaco (codigo, morada) VALUES(:codigo, :morada);");
+                $result->bindParam(':codigo', $last_id);
+                $result->bindParam(':morada', $_REQUEST['morada']);
+                $result->execute();
             }
             if ($type == "posto") {
-                $prep = $db->prepare("INSERT INTO alugavel (morada, foto) VALUES(:morada, :foto);");
-                $prep->bindParam(':morada', $_REQUEST['morada']);
-                $prep->bindParam(':foto', $_REQUEST['foto']);
-                $prep->execute();
+                $result = $db->prepare("INSERT INTO alugavel (morada, foto) VALUES(:morada, :foto);");
+                $result->bindParam(':morada', $_REQUEST['morada']);
+                $result->bindParam(':foto', $_REQUEST['foto']);
+                $result->execute();
                 $last_id = $db->lastInsertId();
 
-                $prep = $db->prepare("INSERT INTO posto (morada, codigo, codigo_espaco) VALUES(:morada, :codigo, :codigo_espaco);");
-                $prep->bindParam(':codigo', $last_id);
-                $prep->bindParam(':codigo_espaco', $_REQUEST['codigo_espaco']);
-                $prep->bindParam(':morada', $_REQUEST['morada']);
-                $prep->execute();
+                $result = $db->prepare("INSERT INTO posto (morada, codigo, codigo_espaco) VALUES(:morada, :codigo, :codigo_espaco);");
+                $result->bindParam(':codigo', $last_id);
+                $result->bindParam(':codigo_espaco', $_REQUEST['codigo_espaco']);
+                $result->bindParam(':morada', $_REQUEST['morada']);
+                $result->execute();
             }
         }
 
-        $prep = $db->prepare("SELECT moradaLocal FROM local;");
-        $prep->execute();
-        $result = $prep->fetchAll();
+        $result = $db->prepare("SELECT moradaLocal FROM local;");
+        $result->execute();
 
         echo("<h3>local</h3><table border=\"1\">\n");
         echo("<tr><td><b>Morada local</b></td><td></td></tr>\n");
         foreach($result as $row)
         {
             echo("<tr><td>");
-            echo($row['moradaLocal']);
-            echo("</td><td><a href=\"a.php?mode=delete&type=local&id={$row['moradaLocal']}\">delete</a></td></tr>\n");
+            echo($row['moradalocal']);
+            echo("</td><td><a href=\"a.php?mode=delete&type=local&id={$row['moradalocal']}\">delete</a></td></tr>\n");
         }
         echo("</table>\n");
 
-        $prep = $db->prepare("SELECT numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro FROM eventoEmergencia;");
-        $prep->execute();
-        $result = $prep->fetchAll();
+        $result = $db->prepare("SELECT numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro FROM eventoEmergencia;");
+        $result->execute();
+        $result = $result->fetchAll();
 
         echo("<h3>eventoEmergencia</h3><table border=\"1\">\n");
         echo("<tr><td><b>Número de telefone</b></td><td><b>Instante da chamada</b></td><td><b>Nome</b></td><td><b>Morada local</b></td><td><b>Número do processo</b></td><td></td></tr>\n");
@@ -108,9 +107,9 @@
         }
         echo("</table>\n");
 
-        $prep = $db->prepare("SELECT numProcessoSocorro FROM processoSocorro;");
-        $prep->execute();
-        $result = $prep->fetchAll();
+        $result = $db->prepare("SELECT numProcessoSocorro FROM processoSocorro;");
+        $result->execute();
+        $result = $result->fetchAll();
 
         echo("<h3>local</h3><table border=\"1\">\n");
         echo("<tr><td><b>Número do processo</b></td><td></td></tr>\n");
@@ -122,9 +121,9 @@
         }
         echo("</table>\n");
 
-        $prep = $db->prepare("SELECT numMeio, nomeMeio, nomeEntidade FROM meio;");
-        $prep->execute();
-        $result = $prep->fetchAll();
+        $result = $db->prepare("SELECT numMeio, nomeMeio, nomeEntidade FROM meio;");
+        $result->execute();
+        $result = $result->fetchAll();
 
         echo("<h3>posto</h3><table border=\"1\">\n");
         echo("<tr><td><b>Número</b></td><td><b>Nome do meio</b></td><td><b>Nome da entidade</b></td><td></td></tr>\n");
@@ -140,9 +139,9 @@
         }
         echo("</table>\n");
 
-        $prep = $db->prepare("SELECT nomeEntidade FROM entidadeMeio;");
-        $prep->execute();
-        $result = $prep->fetchAll();
+        $result = $db->prepare("SELECT nomeEntidade FROM entidadeMeio;");
+        $result->execute();
+        $result = $result->fetchAll();
 
         echo("<h3>local</h3><table border=\"1\">\n");
         echo("<tr><td><b>Nome da entidade</b></td><td></td></tr>\n");
@@ -155,7 +154,7 @@
         echo("</table>\n");
 
         $db = null;
-        $prep = null;
+        $result = null;
     }
     catch (PDOException $e)
     {
