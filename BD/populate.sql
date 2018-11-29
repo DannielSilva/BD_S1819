@@ -1036,7 +1036,7 @@ insert into local values ('Alvaiazere');
 insert into local values ('Melgaco');
 insert into local values ('Vila Vicosa');
 
-insert into eventoEmergencia  values (920000000, '2017-05-21 03:10:19', 'Miguel Ferreira', 'Oliveira do Hospital', 0);
+insert into eventoEmergencia  values (920000000, '2018-05-21 03:10:19', 'Miguel Ferreira', 'Oliveira do Hospital', 0);
 insert into eventoEmergencia  values (920000001, '2018-08-04 22:41:04', 'Miguel Mota', 'Monchique', 1);
 insert into eventoEmergencia  values (920000002, '2018-06-26 15:53:09', 'Diogo Oliveira', 'Albergaria-a-Velha', 2);
 insert into eventoEmergencia  values (920000003, '2017-02-28 01:24:23', 'Ana Santos', 'Proenca-a-Nova', 3);
