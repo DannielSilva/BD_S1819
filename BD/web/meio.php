@@ -4,7 +4,7 @@
     try{
         include 'config.php';
 
-       
+
     }   
     catch (PDOException $e)
     {
@@ -51,4 +51,36 @@
             <input type="submit" value="Remover">
         </form>
     </div>
+
+    
+    <div id = "editar">
+    <form action="altera.php?back=locais.php" method="post">
+        <input type='hidden' name='attr' value='moradalocal'/>  
+        <input type='hidden' name='type' value='local'/>    
+
+            <input list="db_ids" name="db_id">
+            <datalist id="db_ids">
+            <?php
+                $result = $db->prepare("SELECT moradaLocal FROM local;");
+                $result->execute();
+
+                foreach($result as $row){           
+                    echo("<option value='{$row['moradalocal']}'>\n");
+                }
+            ?>
+            </datalist>
+            
+            <input type="submit" value="Remover">
+        </form>
+        <form action="add.php?back=locais.php" method='post'>
+            <input type='hidden' name='attr' value='moradalocal'/>  
+            <input type='hidden' name='type' value='local'/>    
+
+            Morada Local:<br>
+            <input type="text" name="db_id"  >
+
+            <input type="submit" value="Adicionar">   
+        </form> 
+    </div>
+
 </html>
