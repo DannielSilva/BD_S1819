@@ -1,5 +1,5 @@
 
- 
+
 drop TABLE if EXISTS vigia cascade ;
 drop TABLE if EXISTS audita cascade;
 drop TABLE if EXISTS solicita cascade;
@@ -54,7 +54,7 @@ create table segmentoVideo (
  --not in natural habitat
 create table local (
     moradaLocal varchar(80) not null,
-    constraint pk_local primary key(moradaLocal) 
+    constraint pk_local primary key(moradaLocal)
 );
 
 create table processoSocorro (
@@ -119,7 +119,7 @@ create table transporta (
     constraint fk_meioSocorro foreign key(numMeio,nomeEntidade) references meioSocorro(numMeio,nomeEntidade) ON DELETE CASCADE ON UPDATE CASCADE,
     constraint fk_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro) ON DELETE CASCADE ON UPDATE CASCADE
 );
-  
+
 create table alocado (
     numMeio numeric(16) not null,
     nomeEntidade varchar(80) not null,
@@ -129,7 +129,7 @@ create table alocado (
     constraint fk_meioApoio foreign key(numMeio,nomeEntidade) references meioApoio(numMeio,nomeEntidade) ON DELETE CASCADE ON UPDATE CASCADE,
     constraint fk_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro) ON DELETE CASCADE ON UPDATE CASCADE
 );
-  
+
 create table acciona (
     numMeio numeric(16) not null,
     nomeEntidade varchar(80) not null,
@@ -138,10 +138,10 @@ create table acciona (
     constraint fk_meio foreign key(numMeio,nomeEntidade) references meio(numMeio,nomeEntidade) ON DELETE CASCADE ON UPDATE CASCADE,
     constraint fk_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro) ON DELETE CASCADE ON UPDATE CASCADE
 );
-  
+
 create table coordenador (
     idCoordenador numeric(16) not null unique,
-    constraint pk_coordenador primary key(idCoordenador) 
+    constraint pk_coordenador primary key(idCoordenador)
 );
 
 
@@ -180,5 +180,5 @@ create table solicita (
 
 
 ----------------------------------------
--- Populate Relations 
+-- Populate Relations
 ----------------------------------------

@@ -81,8 +81,8 @@
         foreach($result as $row)
         {
             echo("<tr><td>");
-            echo($row['moradaLocal']);
-            echo("</td><td><a href=\"a.php?mode=delete&type=local&id={$row['moradaLocal']}\">delete</a></td></tr>\n");
+            echo($row['moradalocal']);
+            echo("</td><td><a href=\"a.php?mode=delete&type=local&id={$row['moradalocal']}\">delete</a></td></tr>\n");
         }
         echo("</table>\n");
 

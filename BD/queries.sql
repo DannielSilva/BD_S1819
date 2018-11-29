@@ -65,35 +65,34 @@ select distinct numProcessoSocorro from (
 --4. Quantos segmentos de vídeo com duração superior a 60 segundos,
 --   foram gravados em câmeras de vigilância de Monchique durante o mês de Agosto de 2018;
 
-select count(segmentoVideo)
-	from vigia natural join video
-	where duracao > '00:01:00'
-	and dataHoraInicio >= '01:08:2018 00:00:00'
-	and dataHoraFim <= '01:09:2018 00:00:00'
-	and moradaLocal = 'Monchique';
+select count((numSegmento,numCamara))
+	from vigia natural join video natural join segmentoVideo
+		where duracao > '00:01:00'
+			and dataHoraInicio >= '2018.08.01 00:00:00'
+			and dataHoraFim < '2018.09.01 00:00:00'
+			and moradaLocal = 'Monchique';
 
 --5. Liste os Meios de combate que não foram usados como Meios de
 --	Apoio em nenhum  processo de socorro;
 
-select * from (
-	select nomeEntidade, numProcessoSocorro from(
-		meioApoio natural join acciona)
-	left join (
-		select numMeio,nomeEntidade from(
-			meioCombate natural join acciona) )
-);
+	select numMeio, nomeEntidade from
+		meioCombate natural join acciona
+		except
+		select numMeio,nomeEntidade from
+			meioApoio natural join acciona;
 
 --6. Liste as entidades que forneceram meios de combate a todos os
 --	Processos de socorro que acionaram meios;
 
 
-select nomeEntidade
+select distinct nomeEntidade
 from acciona d
 where not exists (
 	select numProcessoSocorro
 	from acciona
 	except
 	select numProcessoSocorro
-	from (acciona inner join meioCombate) b
-	where b.numProcessoSocorro = d.numProcessoSocorro
-)
+	from (acciona natural join meioCombate) as b
+
+	where b.nomeEntidade = d.nomeEntidade
+);
