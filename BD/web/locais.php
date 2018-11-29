@@ -21,22 +21,20 @@
     </div>
     <div id = "add">
         <form action="add.php?back=locais.php" method='post'>
-            <input type='hidden' name='attr' value='moradalocal'/>  
+            <input type='hidden' name='attr1' value='moradalocal'/>  
             <input type='hidden' name='type' value='local'/>    
-
             Morada Local:<br>
-            <input type="text" name="db_id"  >
-
+            <input type="text" name="db_id1"  >
             <input type="submit" value="Adicionar">   
         </form> 
     </div>
 
     <div id = "remove">
         <form action="remove.php?back=locais.php" method="post">
-        <input type='hidden' name='attr' value='moradalocal'/>  
+        <input type='hidden' name='attr1' value='moradalocal'/>  
         <input type='hidden' name='type' value='local'/>    
 
-            <input list="db_ids" name="db_id">
+            <input list="db_ids" name="db_id1" class="validateOnDatalist" placeholder="Please type">
             <datalist id="db_ids">
             <?php
                 $result = $db->prepare("SELECT moradaLocal FROM local;");
