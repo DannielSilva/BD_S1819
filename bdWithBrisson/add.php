@@ -12,7 +12,6 @@
             <li><a href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a  href='meio.php'>Meios</a></li>
-            <li><a href='e.php'>Accionar Meios</a></li>
         </ul>
         <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 <?php
@@ -43,9 +42,9 @@
 
             if ($type == "processoSocorro") {
 
-                $result = $db->prepare("INSERT INTO eventoEmergencia ($attr2,$attr4,$attr3,$attr5,$attr1) VALUES (:numTel,:instChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
+                $result = $db->prepare("INSERT INTO eventoEmergencia VALUES (:numTel,:instChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
                 $result->bindParam(':numTel', $db_id2);
-                $result->bindParam(':instChamada', "'{$db_id4}'");
+                $result->bindParam(':instChamada', $db_id4);
                 $result->bindParam(':nomePessoa', $db_id3);
                 $result->bindParam(':moradaLocal', $db_id5);
                 $result->bindParam(':numProcessoSocorro', $db_id1);    
@@ -92,15 +91,29 @@
 
         }
 
-        else if ($type == "eventoEmergencia") {
-            echo("<p>{$db_id3}</p>");
-            $result = $db->prepare("INSERT INTO eventoEmergencia ($attr1,$attr3,$attr2,$attr4,$attr5) VALUES (:numTelefone,:instanteChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
-            $result->bindParam(':numTelefone', $db_id1);
-            $result->bindParam(':instanteChamada', '2017-11-29 00:24:35');
-            $result->bindParam(':nomePessoa', $db_id2);
-            $result->bindParam(':moradaLocal', $db_id4);
-            $result->bindParam(':numProcessoSocorro', $db_id5); 
+        else if ($type == "eventoemergencia") {
+            $result = $db->prepare("INSERT INTO $type  VALUES (:val1,:val2,:val3,:val4,:val5);");
+            $result->bindParam(':val1', $db_id1);
+            $result->bindParam(':val2', $db_id3);
+            $result->bindParam(':val3', $db_id2);
+            $result->bindParam(':val4', $db_id4);
+            $result->bindParam(':val5', $db_id5);
+
             $result->execute();
+            echo("<p>{$db_id4} reportado por {$db_id3} registado(a) com sucesso para o processo {$db_id3}</p>");
+
+        }
+
+        else if ($type == "acciona") {
+            $result = $db->prepare("INSERT INTO acciona (numMeio,nomeEntidade,numProcessoSocorro) VALUES (:val1,:val2,:val3);");
+
+            $result->bindParam(':val1', $db_id1); 
+            $result->bindParam(':val2', $db_id2); 
+            $result->bindParam(':val3', $db_id3); 
+            $result->execute();
+
+            echo("<p>{$db_id2} - {$db_id1} accionado(a) com sucesso para o processo {$db_id3}</p>");
+
         }
 
        

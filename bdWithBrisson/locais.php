@@ -13,7 +13,6 @@
             <li><a href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a href='meio.php'>Meios</a></li>
-            <li><a href='e.php'>Accionar Meios</a></li>
         </ul>
         <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 
@@ -64,12 +63,13 @@
      $result = $db->prepare("SELECT moradaLocal FROM local;");
      $result->execute();
         echo("<h3>Lista de locais</h3><table border=\"1\">\n");
-            echo("<tr><td><b>Morada local</b></td><td></td></tr>\n");
+            echo("<tr><td>Morada local</td><td>Remover</td><td>Meios</td></tr>\n");
             foreach($result as $row)
             {
                 echo("<tr><td>");
                 echo($row['moradalocal']);
-                echo("</td><td><a href=\"remove.php?back=locais.php&type=local&attr1=moradaLocal&db_id1={$row['moradalocal']}\">delete</a></td></tr>\n");
+                echo("</td><td><a href=\"remove.php?back=locais.php&type=local&attr1=moradaLocal&db_id1={$row['moradalocal']}\">delete</a></td>");
+                echo("</td><td><a href=\"list.php?back=locais.php&type=local&attr1=moradaLocal&db_id1={$row['moradalocal']}\">meios</a></td></tr>\n");
             }
             echo("</table>\n");
     ?>  

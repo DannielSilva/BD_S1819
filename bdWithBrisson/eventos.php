@@ -12,7 +12,6 @@
             <li><a  class="active" href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a href='meio.php'>Meios</a></li>
-            <li><a href='e.php'>Accionar Meios</a></li>
         </ul>
         <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 <?php
@@ -37,24 +36,24 @@
            
     <div id = "add">
         <form action="add.php?back=eventos.php" method='post'>
-            <input type='hidden' name='type' value='eventoEmergencia'/>    
-            <input type='hidden' name='attr1' value='numTelefone'/>
-            <input type='hidden' name='attr3' value='instanteChamada​'/>
-            <input type='hidden' name='attr2' value='nomePessoa'/>
-            <input type='hidden' name='attr4' value='moradaLocal'/>
-            <input type='hidden' name='attr5' value='numProcessoSocorro'/>
+            <input type='hidden' name='type' value='eventoemergencia'/>    
+            <input type='hidden' name='attr1' value='numtelefone'/>
+            <input type='hidden' name='attr3' value='instantechamada​'/>
+            <input type='hidden' name='attr2' value='nomepessoa'/>
+            <input type='hidden' name='attr4' value='moradalocal'/>
+            <input type='hidden' name='attr5' value='numprocessosocorro'/>
               
 
             Numero de Telefone:<br>
             <input type="text" name="db_id1"  required><br>
             <p></p> Instante da chamada:<br>
-            <input type="text" name="db_id3"  required><br>
+            <input type="text" name="db_id3"  placeholder="yy-mm-dd hh:mm:ss" required><br>
             <p></p> Nome da pessoa:<br>
             <input type="text" name="db_id2"  ><br>
             <p></p> Morada do local:<br>
             <input type="text" name="db_id4"  ><br>
             <p></p> Numero de processo socorro:<br>
-            <input type="text" name="db_id5"  ><br>
+            <input type="text" name="db_id5" ><br>
             <p></p>
             <input type="submit" value="Adicionar">   
             <input type="submit" formaction="remove.php?back=eventos.php" value="Remover">

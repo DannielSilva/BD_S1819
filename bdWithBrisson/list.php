@@ -12,7 +12,6 @@
             <li><a href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a  href='meio.php'>Meios</a></li>
-            <li><a href='e.php'>Accionar Meios</a></li>
         </ul>
         <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 <?php
@@ -55,7 +54,7 @@
         }
 
         else if ($type == "local") {
-            $result = $db->prepare("SELECT nummeio,nomemeio FROM acciona natural join eventoemergencia natural join meiosocorro WHERE $attr1=:val ;");
+            $result = $db->prepare("SELECT nummeio,nomeentidade FROM acciona natural join eventoemergencia natural join meiosocorro WHERE $attr1=:val ;");
             $result->bindParam(':val', $db_id1);
             $result->execute();
                echo("<h3>Lista de meios</h3><table border=\"1\">\n");
@@ -67,7 +66,7 @@
 
                        echo("</td><td>");
                        echo($row['nomeentidade']);
-                       echo("</td><td><a href=\"remove.php?back=meio.php&type=meio&attr1=numMeio&attr3=nomeEntidade&db_id1={$row['nummeio']}&db_id3={$row['nomeentidade']}\">delete</a></td></tr>\n");
+                       echo("</td><td><a href=\"remove.php?back=locais.php&type=meio&attr1=numMeio&attr3=nomeEntidade&db_id1={$row['nummeio']}&db_id3={$row['nomeentidade']}\">delete</a></td></tr>\n");
                    }
                    echo("</table>\n<p></p>");
         }
