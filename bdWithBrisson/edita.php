@@ -6,7 +6,7 @@
     </head>
     <body>
     <ul id="nav">
-            <li><a href='index.html'>Ínicio</a></li>
+            <li><a href='index.html'>Inicio</a></li>
             <li><a  href='locais.php'>Locais</a></li>
             <li><a href='proSocorro.php'>Processos de Socorro</a></li>
             <li><a href='eventos.php'>Eventos de Emergência</a></li>

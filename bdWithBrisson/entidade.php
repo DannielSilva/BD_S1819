@@ -6,7 +6,7 @@
     </head>
     <body>
     <ul id="nav">
-            <li><a href='index.html'>Ínicio</a></li>
+            <li><a href='index.html'>Inicio</a></li>
             <li><a href='locais.php'>Locais</a></li>
             <li><a href='proSocorro.php'>Processos de Socorro</a></li>
             <li><a href='eventos.php'>Eventos de Emergência</a></li>
@@ -49,6 +49,19 @@
             <input type="submit" formaction="remove.php?back=entidade.php" value="Remover">
         </form> 
     </div>
+    <?php
+     $result = $db->prepare("SELECT * FROM entidadeMeio;");
+     $result->execute();
+        echo("<h3>Lista de meios</h3><table border=\"1\">\n");
+            echo("<tr><td>Entidade</td><td>Remover</td></tr>\n");
+            foreach($result as $row)
+            {
+                echo("<tr><td>");
+                echo($row['nomeentidade']);
+                echo("</td><td><a href=\"remove.php?back=entidade.php&type=entidadeMeio&attr1=nomeEntidade&db_id1={$row['nomeentidade']}\">delete</a></td></tr>\n");
+            }
+            echo("</table>\n");
+    ?>  
 
    
 

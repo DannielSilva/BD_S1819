@@ -6,7 +6,7 @@
     </head>
     <body>
     <ul id="nav">
-            <li><a href='index.html'>Ínicio</a></li>
+            <li><a href='index.html'>Inicio</a></li>
             <li><a href='locais.php'>Locais</a></li>
             <li><a href='proSocorro.php'>Processos de Socorro</a></li>
             <li><a  class="active" href='eventos.php'>Eventos de Emergência</a></li>
@@ -31,7 +31,7 @@
 
     <h1> Sistema de Gest&atildeo de Inc&ecircndios Florestais </h1>
     <div id = "left_col">
-        <h2>Processos de Socorro</h2>
+        <h2>Eventos de Emergencia</h2>
         <!-- restantes opcoes -->
     </div>
            
@@ -50,11 +50,11 @@
             <p></p> Instante da chamada:<br>
             <input type="text" name="db_id3"  required><br>
             <p></p> Nome da pessoa:<br>
-            <input type="text" name="db_id2"  required><br>
+            <input type="text" name="db_id2"  ><br>
             <p></p> Morada do local:<br>
-            <input type="text" name="db_id4"  required><br>
+            <input type="text" name="db_id4"  ><br>
             <p></p> Numero de processo socorro:<br>
-            <input type="text" name="db_id5"  required><br>
+            <input type="text" name="db_id5"  ><br>
             <p></p>
             <input type="submit" value="Adicionar">   
             <input type="submit" formaction="remove.php?back=eventos.php" value="Remover">

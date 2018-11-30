@@ -7,7 +7,7 @@
     </head>
     <body>
     <ul id="nav">
-            <li><a href='index.html'>Ínicio</a></li>
+            <li><a href='index.html'>Inicio</a></li>
             <li><a class="active" href='locais.php'>Locais</a></li>
             <li><a href='proSocorro.php'>Processos de Socorro</a></li>
             <li><a href='eventos.php'>Eventos de Emergência</a></li>
@@ -36,24 +36,13 @@
         <h2>Locais</h2>
         <!-- restantes opcoes -->
     </div>
-        
-    <div id = "add">
-        <form action="add.php?back=locais.php" method='post'>
-            <input type='hidden' name='attr1' value='moradalocal'/>  
-            <input type='hidden' name='type' value='local'/>    
-
-            Morada Local:<br>
-            <input type="text" name="db_id1"  >
-
-            <input type="submit" value="Adicionar">   
-        </form> 
-    </div>
+  
 
     <div id = "remove">
-        <form action="remove.php?back=locais.php" method="post">
+        <form action="add.php?back=locais.php" method="post">
         <input type='hidden' name='attr1' value='moradalocal'/>  
         <input type='hidden' name='type' value='local'/>    
-
+            Morada Local:<br>
             <input list="db_ids" name="db_id1">
             <datalist id="db_ids">
             <?php
@@ -65,11 +54,25 @@
                 }
             ?>
             </datalist>
-            
-            <input type="submit" value="Remover">
+            <p></p>
+            <input type="submit" value="Adicionar">
+
+            <input type="submit" formaction="remove.php?back=locais.php" value="Remover">
         </form>
     </div>
-    
+    <?php
+     $result = $db->prepare("SELECT moradaLocal FROM local;");
+     $result->execute();
+        echo("<h3>Lista de locais</h3><table border=\"1\">\n");
+            echo("<tr><td><b>Morada local</b></td><td></td></tr>\n");
+            foreach($result as $row)
+            {
+                echo("<tr><td>");
+                echo($row['moradalocal']);
+                echo("</td><td><a href=\"remove.php?back=locais.php&type=local&attr1=moradaLocal&db_id1={$row['moradalocal']}\">delete</a></td></tr>\n");
+            }
+            echo("</table>\n");
+    ?>  
 
             </div>
 </html>

@@ -6,9 +6,9 @@
     </head>
     <body>
     <ul id="nav">
-            <li><a href='index.html'>Ínicio</a></li>
+            <li><a href='index.html'>Inicio</a></li>
             <li><a  href='locais.php'>Locais</a></li>
-            <li><a href='proSocorro.php'>>Processos de Socorro</a></li>
+            <li><a href='proSocorro.php'>Processos de Socorro</a></li>
             <li><a href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a  href='meio.php'>Meios</a></li>
@@ -24,18 +24,33 @@
         $attr1 = isset($_REQUEST['attr1']) ? $_REQUEST['attr1'] : '';
         $attr2 = isset($_REQUEST['attr2']) ? $_REQUEST['attr2'] : '';
         $attr3 = isset($_REQUEST['attr3']) ? $_REQUEST['attr3'] : '';
+        $attr4 = isset($_REQUEST['attr4']) ? $_REQUEST['attr4'] : '';
+        $attr5 = isset($_REQUEST['attr5']) ? $_REQUEST['attr5'] : '';
         $db_id1 = isset($_REQUEST['db_id1']) ? $_REQUEST['db_id1'] : '';
         $db_id2 = isset($_REQUEST['db_id2']) ? $_REQUEST['db_id2'] : '';
         $db_id3 = isset($_REQUEST['db_id3']) ? $_REQUEST['db_id3'] : '';
+        $db_id4 = isset($_REQUEST['db_id4']) ? $_REQUEST['db_id4'] : '';
+        $db_id5 = isset($_REQUEST['db_id5']) ? $_REQUEST['db_id5'] : '';
         $back = isset($_REQUEST['back']) ? $_REQUEST['back'] : '';
 
 
         if ($type == "local" or $type == "entidadeMeio" or $type == "processoSocorro") {
-            $result = $db->prepare("INSERT INTO $type ($attr1) VALUES (:val);");
+            $result = $db->prepare("INSERT INTO $type ($attr1) VALUES (:val);");+
             $result->bindParam(':val', $db_id1);
             $result->execute();
 
             echo("<p>{$attr1} {$db_id1} adicionado(a) com sucesso a {$type}</p>");
+
+            if ($type == "processoSocorro") {
+
+                $result = $db->prepare("INSERT INTO eventoEmergencia ($attr2,$attr4,$attr3,$attr5,$attr1) VALUES (:numTel,:instChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
+                $result->bindParam(':numTel', $db_id2);
+                $result->bindParam(':instChamada', "'{$db_id4}'");
+                $result->bindParam(':nomePessoa', $db_id3);
+                $result->bindParam(':moradaLocal', $db_id5);
+                $result->bindParam(':numProcessoSocorro', $db_id1);    
+                $result->execute();
+            }
         }
 
         
@@ -78,14 +93,13 @@
         }
 
         else if ($type == "eventoEmergencia") {
-            $result = $db->prepare("INSERT INTO $type ($attr1,$attr3,$attr2,$attr4,$attr5) VALUES (:numTel,:instChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
-            $result->bindParam(':numTel', $db_id1);
-            $result->bindParam(':instChamada', $db_id3);
+            echo("<p>{$db_id3}</p>");
+            $result = $db->prepare("INSERT INTO eventoEmergencia ($attr1,$attr3,$attr2,$attr4,$attr5) VALUES (:numTelefone,:instanteChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
+            $result->bindParam(':numTelefone', $db_id1);
+            $result->bindParam(':instanteChamada', '2017-11-29 00:24:35');
             $result->bindParam(':nomePessoa', $db_id2);
             $result->bindParam(':moradaLocal', $db_id4);
-            $result->bindParam(':numProcessoSocorro,' $db_id5);
-
-
+            $result->bindParam(':numProcessoSocorro', $db_id5); 
             $result->execute();
         }
 
@@ -95,7 +109,9 @@
 
     catch (PDOException $e)
     {
-        echo("<p>ERROR: {$e->getMessage()}</p><br><a href=\"a.php\">Back</a>");
+        echo("<p>ERROR: {$e->getMessage()}</p>");
+        echo("<a href={$back} ><input  type='submit' value='Retornar'></a>");
+
     }
 ?>
 
