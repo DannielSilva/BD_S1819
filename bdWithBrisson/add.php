@@ -10,7 +10,7 @@
             <li><a  href='locais.php'>Locais</a></li>
             <li><a href='b.php'>Processos de Socorro</a></li>
             <li><a href='d.php'>Eventos de Emergência</a></li>
-            <li><a href='e.php'>Entidades</a></li>
+            <li><a href='entidade.php'>Entidades</a></li>
             <li><a  href='meio.php'>Meios</a></li>
             <li><a href='e.php'>Accionar Meios</a></li>
         </ul>
@@ -33,6 +33,14 @@
         if ($type == "local") {
             $result = $db->prepare("INSERT INTO $type ($attr1) VALUES (:morada);");
             $result->bindParam(':morada', $db_id1);
+            $result->execute();
+
+            echo("<p>{$attr1} {$db_id1} adicionado(a) com sucesso a {$type}</p>");
+        }
+
+        if ($type == "entidadeMeio") {
+            $result = $db->prepare("INSERT INTO $type ($attr1) VALUES (:nomeEnt);");
+            $result->bindParam(':nomeEnt', $db_id1);
             $result->execute();
 
             echo("<p>{$attr1} {$db_id1} adicionado(a) com sucesso a {$type}</p>");

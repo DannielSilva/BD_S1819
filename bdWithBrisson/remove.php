@@ -10,7 +10,7 @@
             <li><a  href='locais.php'>Locais</a></li>
             <li><a href='b.php'>Processos de Socorro</a></li>
             <li><a href='d.php'>Eventos de Emergência</a></li>
-            <li><a href='e.php'>Entidades</a></li>
+            <li><a href='entidade.php'>Entidades</a></li>
             <li><a  href='meio.php'>Meios</a></li>
             <li><a href='e.php'>Accionar Meios</a></li>
         </ul>

@@ -7,11 +7,11 @@
     <body>
     <ul id="nav">
             <li><a href='index.html'>Ínicio</a></li>
-            <li><a  href='locais.php'>Locais</a></li>
+            <li><a href='locais.php'>Locais</a></li>
             <li><a href='b.php'>Processos de Socorro</a></li>
             <li><a href='d.php'>Eventos de Emergência</a></li>
-            <li><a href='entidade.php'>Entidades</a></li>
-            <li><a class="active" href='meio.php'>Meios</a></li>
+            <li><a class="active" href='entidade.php'>Entidades</a></li>
+            <li><a href='meio.php'>Meios</a></li>
             <li><a href='e.php'>Accionar Meios</a></li>
         </ul>
         <div style="margin-left:25%;padding:1px 16px;height:1000px;">
@@ -36,30 +36,17 @@
     </div>
            
     <div id = "add">
-        <form action="add.php?back=meio.php" method='post'>
-            <input type='hidden' name='attr1' value='numMeio'/>  
-            <input type='hidden' name='attr2' value='nomeMeio'/>
-            <input type='hidden' name='attr3' value='nomeEntidade'/>
+        <form action="add.php?back=entidade.php" method='post'>
+            <input type='hidden' name='attr1' value='nomeEntidade'/>
               
-            <input type='hidden' name='type' value='meio'/>    
+            <input type='hidden' name='type' value='entidadeMeio'/>    
 
-            Numero Meio:<br>
-            <input type="text" name="db_id1"  required>
-            <p></p>
-            Nome Meio:<br>
-            <input type="text" name="db_id2"  >
-            <p></p>
             Nome Entidade:<br>
-            <input type="text" name="db_id3"  required><br>
-            <p></p>
-            <input type="checkbox" value="yes"  name="comb" >Combate
-            <input type="checkbox" value="yes" name="sos" >Socorro
-            <input type="checkbox" value="yes"  name="apoio" >Apoio
+            <input type="text" name="db_id1"  required><br>
             <p></p>
 
             <input type="submit" value="Adicionar">   
             <input type="submit" formaction="remove.php?back=meio.php" value="Remover">
-            <input type="submit" formaction="edita.php?back=meio.php"  value="Editar">
         </form> 
     </div>
 

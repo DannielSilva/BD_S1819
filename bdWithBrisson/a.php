@@ -10,8 +10,8 @@
             <li><a class="active" href='a.php'>Locais</a></li>
             <li><a href='b.php'>Processos de Socorro</a></li>
             <li><a href='d.php'>Eventos de Emergência</a></li>
-            <li><a href='e.php'>Entidades</a></li>
-            <li><a href='e.php'>Meios</a></li>
+            <li><a href='entidade.php'>Entidades</a></li>
+            <li><a href='meio.php'>Meios</a></li>
             <li><a href='e.php'>Accionar Meios</a></li>
         </ul>
         <div style="margin-left:25%;padding:1px 16px;height:1000px;">
