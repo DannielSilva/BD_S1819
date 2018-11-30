@@ -8,8 +8,8 @@
     <ul id="nav">
             <li><a href='index.html'>Ínicio</a></li>
             <li><a  href='locais.php'>Locais</a></li>
-            <li><a href='b.php'>Processos de Socorro</a></li>
-            <li><a href='d.php'>Eventos de Emergência</a></li>
+            <li><a href='proSocorro.php'>>Processos de Socorro</a></li>
+            <li><a href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a  href='meio.php'>Meios</a></li>
             <li><a href='e.php'>Accionar Meios</a></li>
@@ -30,23 +30,17 @@
         $back = isset($_REQUEST['back']) ? $_REQUEST['back'] : '';
 
 
-        if ($type == "local") {
-            $result = $db->prepare("INSERT INTO $type ($attr1) VALUES (:morada);");
-            $result->bindParam(':morada', $db_id1);
+        if ($type == "local" or $type == "entidadeMeio" or $type == "processoSocorro") {
+            $result = $db->prepare("INSERT INTO $type ($attr1) VALUES (:val);");
+            $result->bindParam(':val', $db_id1);
             $result->execute();
 
             echo("<p>{$attr1} {$db_id1} adicionado(a) com sucesso a {$type}</p>");
         }
 
-        if ($type == "entidadeMeio") {
-            $result = $db->prepare("INSERT INTO $type ($attr1) VALUES (:nomeEnt);");
-            $result->bindParam(':nomeEnt', $db_id1);
-            $result->execute();
+        
 
-            echo("<p>{$attr1} {$db_id1} adicionado(a) com sucesso a {$type}</p>");
-        }
-
-        if ($type == "meio") {
+        else if ($type == "meio") {
             
             $result = $db->prepare("INSERT INTO $type ($attr1,$attr2,$attr3) VALUES (:numMeio,:nomeMeio,:nomeEntidade);");
             $result->bindParam(':numMeio', $db_id1);
@@ -80,6 +74,19 @@
                 $result->execute();
                 echo("<p>{$db_id3} - {$db_id1} adicionado(a) com sucesso a meioApoio</p>");
             }
+
+        }
+
+        else if ($type == "eventoEmergencia") {
+            $result = $db->prepare("INSERT INTO $type ($attr1,$attr3,$attr2,$attr4,$attr5) VALUES (:numTel,:instChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
+            $result->bindParam(':numTel', $db_id1);
+            $result->bindParam(':instChamada', $db_id3);
+            $result->bindParam(':nomePessoa', $db_id2);
+            $result->bindParam(':moradaLocal', $db_id4);
+            $result->bindParam(':numProcessoSocorro,' $db_id5);
+
+
+            $result->execute();
         }
 
        

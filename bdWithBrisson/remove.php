@@ -8,8 +8,8 @@
     <ul id="nav">
             <li><a href='index.html'>Ínicio</a></li>
             <li><a  href='locais.php'>Locais</a></li>
-            <li><a href='b.php'>Processos de Socorro</a></li>
-            <li><a href='d.php'>Eventos de Emergência</a></li>
+            <li><a href='proSocorro.php'>Processos de Socorro</a></li>
+            <li><a href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a  href='meio.php'>Meios</a></li>
             <li><a href='e.php'>Accionar Meios</a></li>
@@ -30,7 +30,7 @@
         $back = isset($_REQUEST['back']) ? $_REQUEST['back'] : '';
 
 
-        if ($type == local or $type == entidadeMeio) {
+        if ($type == local or $type == entidadeMeio or $type == processoSocorro) {
             /*$check = $db->prepare("SELECT 1 FROM $type WHERE $attr1 = :val1;");
             $check->bindParam(':val1', $db_id1);
             $check->execute();
@@ -47,7 +47,7 @@
             //}
         }
 
-        if ($type == meio) {
+        else if ($type == "meio" or $type == "eventoEmergencia" ) {
             /*$check = $db->prepare("SELECT 1 FROM $type WHERE $attr1 = :val1 and $attr3 = :val2;");
             $check->bindParam(':val1', $db_id1);
             $check->bindParam(':val2', $db_id3);
@@ -64,6 +64,9 @@
                 echo("<p>{$db_id3} - {$db_id1} removido(a) com sucesso a $type</p>");
             //}
         }
+
+
+
 
         //$result = pgdelete($db, 'post_log', $type);
 

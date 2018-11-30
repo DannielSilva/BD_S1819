@@ -9,8 +9,8 @@
     <ul id="nav">
             <li><a href='index.html'>Ínicio</a></li>
             <li><a class="active" href='locais.php'>Locais</a></li>
-            <li><a href='b.php'>Processos de Socorro</a></li>
-            <li><a href='d.php'>Eventos de Emergência</a></li>
+            <li><a href='proSocorro.php'>Processos de Socorro</a></li>
+            <li><a href='eventos.php'>Eventos de Emergência</a></li>
             <li><a href='entidade.php'>Entidades</a></li>
             <li><a href='meio.php'>Meios</a></li>
             <li><a href='e.php'>Accionar Meios</a></li>
