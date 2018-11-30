@@ -46,7 +46,7 @@
             <p></p>
 
             <input type="submit" value="Adicionar">   
-            <input type="submit" formaction="remove.php?back=meio.php" value="Remover">
+            <input type="submit" formaction="remove.php?back=entidade.php" value="Remover">
         </form> 
     </div>
 

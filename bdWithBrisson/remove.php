@@ -30,25 +30,25 @@
         $back = isset($_REQUEST['back']) ? $_REQUEST['back'] : '';
 
 
-        if ($type == local) {
-            $check = $db->prepare("SELECT 1 FROM $type WHERE $attr1 = :val1;");
+        if ($type == local or $type == entidadeMeio) {
+            /*$check = $db->prepare("SELECT 1 FROM $type WHERE $attr1 = :val1;");
             $check->bindParam(':val1', $db_id1);
             $check->execute();
 
             if (pg_num_rows($check)==0) {
                 echo("<p>{$db_id1} não existe em $type</p>");
             }
-            else {
+            else {*/
 
             $result = $db->prepare("DELETE FROM $type WHERE $attr1 = :val;");
             $result->bindParam(':val', $db_id1);
             $result->execute();
             echo("<p>{$attr1} {$db_id1} removido(a) com sucesso a {$type}</p>");
-            }
+            //}
         }
 
         if ($type == meio) {
-            $check = $db->prepare("SELECT 1 FROM $type WHERE $attr1 = :val1 and $attr3 = :val2;");
+            /*$check = $db->prepare("SELECT 1 FROM $type WHERE $attr1 = :val1 and $attr3 = :val2;");
             $check->bindParam(':val1', $db_id1);
             $check->bindParam(':val2', $db_id3);
             $check->execute();
@@ -56,13 +56,13 @@
             if (pg_num_rows($check)==0) {
                 echo("<p>{$db_id3} - {$db_id1} não existe em $type</p>");
             }
-            else {
+            else {*/
                 $result = $db->prepare("DELETE FROM $type WHERE $attr1 = :val1 and $attr3 = :val2;");
                 $result->bindParam(':val1', $db_id1);
                 $result->bindParam(':val2', $db_id3);
                 $result->execute();
                 echo("<p>{$db_id3} - {$db_id1} removido(a) com sucesso a $type</p>");
-            }
+            //}
         }
 
         //$result = pgdelete($db, 'post_log', $type);
