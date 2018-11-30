@@ -36,7 +36,7 @@
            
     <div id = "add">
         <form action="add.php?back=eventos.php" method='post'>
-            <input type='hidden' name='type' value='eventoEmergencia'/>    
+            <input type='hidden' name='type' value='eventoemergencia'/>    
             <input type='hidden' name='attr1' value='numtelefone'/>
             <input type='hidden' name='attr3' value='instantechamada​'/>
             <input type='hidden' name='attr2' value='nomepessoa'/>

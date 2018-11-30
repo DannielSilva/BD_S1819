@@ -92,15 +92,15 @@
         }
 
         else if ($type == "eventoemergencia") {
+            $timestamp = str_replace("T"," ",$db_id3);
             $result = $db->prepare("INSERT INTO $type  VALUES (:val1,:val2,:val3,:val4,:val5);");
             $result->bindParam(':val1', $db_id1);
-            $result->bindParam(':val2', $db_id3);
+            $result->bindParam(':val2', $timestamp);
             $result->bindParam(':val3', $db_id2);
             $result->bindParam(':val4', $db_id4);
             $result->bindParam(':val5', $db_id5);
-
             $result->execute();
-            echo("<p>{$db_id4} reportado por {$db_id3} registado(a) com sucesso para o processo {$db_id3}</p>");
+            echo("<p>Evento de emergencia com numero de telefone: {$db_id1}, com instante de chamada: {$timestamp} adicionado com sucesso.</p>");
 
         }
 
