@@ -56,11 +56,13 @@
                 echo("<p>{$db_id3} - {$db_id1} não existe em $type</p>");
             }
             else {*/
-                $result = $db->prepare("DELETE FROM $type WHERE $attr1 = :val1 and $attr3 = :val2;");
+                $result = $db->prepare("DELETE FROM $type WHERE $attr1 = :val1 and instanteChamada = :val2;");
+                if($type =="eventoEmergencia") $db_id3 = str_replace("T"," ",$db_id3);
                 $result->bindParam(':val1', $db_id1);
                 $result->bindParam(':val2', $db_id3);
                 $result->execute();
-                echo("<p>{$db_id3} - {$db_id1} removido(a) com sucesso a $type</p>");
+
+                echo("<p>O {$type} com {$attr1}: {$db_id1} e com {$attr3}: {$db_id3} removido(a) com sucesso.</p>");
             //}
         }
 

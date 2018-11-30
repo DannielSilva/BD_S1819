@@ -37,13 +37,19 @@
     <div id = "add">
         <form action="add.php?back=entidade.php" method='post'>
             <input type='hidden' name='attr1' value='nomeEntidade'/>
-              
             <input type='hidden' name='type' value='entidadeMeio'/>    
-
             Nome Entidade:<br>
-            <input type="text" name="db_id1"  required><br>
+            <input list="db_id1s" type="text" name="db_id1"  required><br>
+            <datalist id="db_id1s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT nomeentidade FROM entidadeMeio;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['nomeentidade']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p>
-
             <input type="submit" value="Adicionar">   
             <input type="submit" formaction="remove.php?back=entidade.php" value="Remover">
         </form> 

@@ -46,21 +46,56 @@
             <input type='hidden' name='type' value='processoSocorro'/>    
 
             Numero do processo de socorro:<br>
-            <input type="text" name="db_id1"  required><br>
+            <input list="db_id1s" type="text" name="db_id1"  required><br>
+            <datalist id="db_id1s">
+            <?php
+                $result = $db->prepare("SELECT numProcessoSocorro FROM processoSocorro;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['numprocessosocorro']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p>
 
             <b>Novo evento de emergencia:</b><br>
             <p></p>
 
             Numero de Telefone:<br>
-            <input type="text" name="db_id2"  ><br>
+            <input list="db_id2s" type="text" name="db_id2"  ><br>
+            <datalist id="db_id2s">
+            <?php
+                $result = $db->prepare("SELECT numtelefone FROM eventoemergencia;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['numtelefone']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p> Instante da chamada:<br>
-            <input type="text" name="db_id4"  ><br>
+            <input list="db_id3s" type="datetime-local" value="" name="db_id4" step="1"><br>
             <p></p> Nome da pessoa:<br>
-            <input type="text" name="db_id3"  ><br>
+            <input list="db_id4s" type="text" name="db_id3"  ><br>
+            <datalist id="db_id4s">
+            <?php
+                $result = $db->prepare("SELECT nomepessoa FROM eventoemergencia;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['nomepessoa']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p> Morada do local:<br>
-            <input type="text" name="db_id5"  ><br>
- 
+            <input list="db_id5s" type="text" name="db_id5"  ><br>
+            <datalist id="db_id5s">
+            <?php
+                $result = $db->prepare("SELECT moradaLocal FROM eventoemergencia;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['moradalocal']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p>
 
 

@@ -36,7 +36,7 @@
            
     <div id = "add">
         <form action="add.php?back=eventos.php" method='post'>
-            <input type='hidden' name='type' value='eventoemergencia'/>    
+            <input type='hidden' name='type' value='eventoEmergencia'/>    
             <input type='hidden' name='attr1' value='numtelefone'/>
             <input type='hidden' name='attr3' value='instantechamada​'/>
             <input type='hidden' name='attr2' value='nomepessoa'/>
@@ -45,15 +45,51 @@
               
 
             Numero de Telefone:<br>
-            <input type="text" name="db_id1"  required><br>
+            <input list="db_id1s" type="text" name="db_id1"  required><br>
+            <datalist id="db_id1s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT numTelefone FROM eventoemergencia;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['numtelefone']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p> Instante da chamada:<br>
-            <input type="text" name="db_id3"  placeholder="yy-mm-dd hh:mm:ss" required><br>
+            <input list="db_id3s" type="datetime-local" name="db_id3"  step="1" required><br>
             <p></p> Nome da pessoa:<br>
-            <input type="text" name="db_id2"  ><br>
+            <input list="db_id2s" type="text" name="db_id2"  ><br>
+            <datalist id="db_id2s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT nomepessoa FROM eventoemergencia;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['nomepessoa']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p> Morada do local:<br>
-            <input type="text" name="db_id4"  ><br>
+            <input list="db_id4s" type="text" name="db_id4"  ><br>
+            <datalist id="db_id4s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT moradalocal FROM eventoemergencia;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['moradalocal']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p> Numero de processo socorro:<br>
-            <input type="text" name="db_id5" ><br>
+            <input list="db_id5s" type="text" name="db_id5" ><br>
+            <datalist id="db_id5s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT numprocessosocorro FROM eventoemergencia;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['numprocessosocorro']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p>
             <input type="submit" value="Adicionar">   
             <input type="submit" formaction="remove.php?back=eventos.php" value="Remover">

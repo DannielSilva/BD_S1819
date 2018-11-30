@@ -43,13 +43,40 @@
             <input type='hidden' name='type' value='meio'/>    
 
             Numero Meio:<br>
-            <input type="text" name="db_id1"  required>
+            <input list="db_id1s" type="number" name="db_id1"  required>
+            <datalist id="db_id1s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT numMeio FROM meio;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['nummeio']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p>
             Nome Meio:<br>
-            <input type="text" name="db_id2"  >
+            <input list="db_id2s" type="text" name="db_id2"  >
+            <datalist id="db_id2s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT nomeMeio FROM meio;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['nomemeio']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p>
             Nome Entidade:<br>
-            <input type="text" name="db_id3"  required><br>
+            <input list="db_id3s"type="text" name="db_id3"  required><br>
+            <datalist id="db_id3s">
+            <?php
+                $result = $db->prepare("SELECT DISTINCT nomeentidade FROM meio;");
+                $result->execute();
+                foreach($result as $row){           
+                    echo("<option value='{$row['nomeentidade']}'>\n");
+                }
+            ?>
+            </datalist>
             <p></p>
             <input type="checkbox" value="yes"  name="comb" >Combate
             <input type="checkbox" value="yes" name="sos" >Socorro
@@ -87,9 +114,5 @@
             }
             echo("</table>\n");
     ?>  
-
-   
-
- 
 
 </html>

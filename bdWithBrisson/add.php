@@ -44,7 +44,7 @@
 
                 $result = $db->prepare("INSERT INTO eventoEmergencia VALUES (:numTel,:instChamada,:nomePessoa,:moradaLocal,:numProcessoSocorro);");
                 $result->bindParam(':numTel', $db_id2);
-                $result->bindParam(':instChamada', $db_id4);
+                $result->bindParam(':instChamada', str_replace("T"," ",$db_id4));
                 $result->bindParam(':nomePessoa', $db_id3);
                 $result->bindParam(':moradaLocal', $db_id5);
                 $result->bindParam(':numProcessoSocorro', $db_id1);    
