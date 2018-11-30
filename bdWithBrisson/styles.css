@@ -2,6 +2,25 @@ body {
     margin: 0;
 }
 
+table {
+    border-collapse: collapse;
+    width:50%
+    
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
 #nav {
     list-style-type: none;
     margin: 0;
@@ -33,3 +52,4 @@ li a:hover:not(.active) {
 .nome {
     padding-top: 10px;
 }
+
